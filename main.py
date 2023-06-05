@@ -21,9 +21,23 @@ def descargar_cancion(url):
         ydl.download([url])
 
 
+
+def descargar_video(url):
+    ydl_opts = {
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',  # Selecciona el mejor formato de video disponible
+        'outtmpl': '%(title)s.%(ext)s',
+    }
+
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+
+
 if __name__ == '__main__':
     # URL del video de YouTube
     url = 'https://www.youtube.com/watch?v=vHBjlleWOkk'
 
     # Llamar a la función para descargar la canción
-    descargar_cancion(url)
+    #descargar_cancion(url)
+
+    descargar_video(url)
+
